@@ -1,0 +1,48 @@
+{
+  "name": "erp-agricola-siempre-alcachofa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx servidor/iniciar.ts",
+    "build": "next build",
+    "start": "tsx servidor/iniciar.ts --produccion",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:migrate": "tsx database/migrar.ts",
+    "db:seed": "tsx database/migrar.ts --solo-esquema",
+    "db:verificar": "tsx database/migrar.ts --verificar",
+    "db:recrear": "tsx database/recrear-bd.ts",
+    "db:reset": "tsx database/recrear-bd.ts --limpiar",
+    "test:integracion": "tsx tests/integracion.ts",
+    "test:migracion": "tsx tests/migracion-integracion.ts",
+    "test:fechas": "tsx tests/integracion-fechas.ts",
+    "format": "prettier --write app components cliente servidor lib tests database/migrar.ts *.md *.mjs *.mts *.json"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "framer-motion": "^13.4.0",
+    "lucide-react": "^0.577.0",
+    "mariadb": "^3.5.4",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "recharts": "^3.7.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.4.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "prettier": "^3.9.8",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
+  }
+}

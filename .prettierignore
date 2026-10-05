@@ -1,0 +1,9 @@
+node_modules/
+.next/
+respaldos/
+tmp/
+database/informes/
+database/historico/
+package-lock.json
+AGENTS.md
+CLAUDE.md

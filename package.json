@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "tsx servidor/iniciar.ts",
-    "build": "next build --no-turbopack",
+    "build": "next build",
     "start": "tsx servidor/iniciar.ts --produccion",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",

@@ -1,8 +1,8 @@
 -- ERP Agrícola Siempre Alcachofa.
 -- Importación compatible con MySQL 8 / MariaDB 10.4+ (XAMPP).
 -- No elimina ni modifica las tablas históricas. No crea personas ni datos de campo.
-CREATE DATABASE IF NOT EXISTS `alcachofa_cultivos_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `alcachofa_cultivos_db`;
+CREATE DATABASE IF NOT EXISTS `u374521469_bdcultivos` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `u374521469_bdcultivos`;
 
 CREATE TABLE IF NOT EXISTS roles (
   codigo VARCHAR(32) PRIMARY KEY,

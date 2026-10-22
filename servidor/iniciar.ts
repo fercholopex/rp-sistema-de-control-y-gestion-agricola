@@ -6,10 +6,17 @@ async function iniciar() {
   Object.assign(process.env, {
     NODE_ENV: produccion ? "production" : "development",
   });
-  const puerto = Number(process.env.PUERTO);
-  const direccion = process.env.HOST_ESCUCHA;
-  if (!Number.isInteger(puerto) || puerto < 1 || puerto > 65535 || !direccion) {
-    throw new Error("Configura PUERTO y HOST_ESCUCHA en .env.");
+  const puertoConfigurado = produccion
+    ? (process.env.PORT || "3000")
+    : (process.env.PUERTO || process.env.PORT || "3000");
+  const puerto = Number(puertoConfigurado);
+  const direccion = produccion
+    ? (process.env.HOST || "0.0.0.0")
+    : (process.env.HOST_ESCUCHA || "127.0.0.1");
+  if (!Number.isInteger(puerto) || puerto < 1 || puerto > 65535) {
+    throw new Error(
+      `El puerto de escucha (${produccion ? "PORT" : "PUERTO"}) no es válido.`,
+    );
   }
   const cliente = next({ dev: !produccion, port: puerto, hostname: direccion });
   await cliente.prepare();
@@ -18,9 +25,7 @@ async function iniciar() {
   const atender = cliente.getRequestHandler();
   servidor.use((solicitud, respuesta) => atender(solicitud, respuesta));
   const instancia = servidor.listen(puerto, direccion, () => {
-    console.info(
-      `ERP Agrícola Siempre Alcachofa disponible en ${process.env.ORIGEN_FRONTEND}`,
-    );
+    console.info(`Servidor iniciado en ${direccion}:${puerto}.`);
   });
   const cerrar = () =>
     instancia.close(() => {

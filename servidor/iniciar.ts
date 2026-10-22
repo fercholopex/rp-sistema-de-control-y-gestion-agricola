@@ -20,7 +20,9 @@ async function iniciar() {
   }
   const cliente = next({ dev: !produccion, port: puerto, hostname: direccion });
   await cliente.prepare();
-  const { crearAplicacion } = await import("./src/aplicacion");
+  const { crearAplicacion } = require("./src/aplicacion") as typeof import(
+    "./src/aplicacion"
+  );
   const servidor = crearAplicacion();
   const atender = cliente.getRequestHandler();
   servidor.use((solicitud, respuesta) => atender(solicitud, respuesta));

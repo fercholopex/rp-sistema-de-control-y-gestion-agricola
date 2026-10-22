@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx servidor/iniciar.ts",
     "build": "next build --webpack",
-    "start": "tsx servidor/iniciar.ts --produccion",
+    "start": "node server.js",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
